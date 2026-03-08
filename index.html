@@ -2,31 +2,99 @@
 <html>
 <head>
 <title>CPR & First Aid Learning</title>
+
 <style>
+
 body{
 font-family: Arial;
-background:#f4f8fb;
-text-align:center;
 margin:0;
+background:#f4f8fb;
 }
+
 header{
 background:#d62828;
 color:white;
-padding:20px;
+padding:25px;
+text-align:center;
 font-size:28px;
+font-weight:bold;
 }
+
+nav{
+background:#003049;
+padding:15px;
+text-align:center;
+}
+
+nav a{
+color:white;
+margin:15px;
+text-decoration:none;
+font-size:18px;
+}
+
+.hero{
+padding:60px;
+text-align:center;
+background:white;
+}
+
 .section{
-padding:40px;
+padding:50px;
+text-align:center;
 }
+
+.cards{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+}
+
 .card{
 background:white;
-padding:20px;
-margin:20px;
+width:260px;
+margin:15px;
+padding:25px;
 border-radius:10px;
 box-shadow:0 2px 8px rgba(0,0,0,0.1);
-display:inline-block;
-width:250px;
 }
+
+.card h3{
+color:#d62828;
+}
+
+.video{
+text-align:center;
+padding:40px;
+}
+
+.quiz{
+background:white;
+margin:auto;
+width:320px;
+padding:25px;
+border-radius:10px;
+box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+button{
+background:#d62828;
+color:white;
+border:none;
+padding:10px 20px;
+font-size:16px;
+border-radius:6px;
+cursor:pointer;
+}
+
+footer{
+background:#003049;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:40px;
+}
+
 </style>
 </head>
 
@@ -36,26 +104,98 @@ width:250px;
 CPR & First Aid Learning
 </header>
 
-<div class="section">
-<h2>Learn Life-Saving Skills</h2>
-<p>Simple guides to help you respond in emergencies.</p>
+<nav>
+<a href="#">Home</a>
+<a href="#guides">Guides</a>
+<a href="#video">Training Video</a>
+<a href="#quiz">Quiz</a>
+</nav>
+
+<section class="hero">
+<h1>Learn Life-Saving Skills</h1>
+<p>Simple guides to help you respond during emergencies.</p>
+</section>
+
+<section id="guides" class="section">
+<h2>Emergency Guides</h2>
+
+<div class="cards">
 
 <div class="card">
 <h3>CPR</h3>
-<p>Learn how to perform CPR for adults and children.</p>
+<p>
+1. Call emergency services.<br>
+2. Place hands in center of chest.<br>
+3. Push hard and fast.<br>
+4. 100–120 compressions per minute.
+</p>
 </div>
 
 <div class="card">
 <h3>Choking</h3>
-<p>Steps to help someone who is choking.</p>
+<p>
+1. Ask if they can cough.<br>
+2. Give 5 back blows.<br>
+3. Perform abdominal thrusts.<br>
+4. Call emergency services.
+</p>
 </div>
 
 <div class="card">
-<h3>Bleeding Control</h3>
-<p>How to stop bleeding and treat injuries.</p>
+<h3>Bleeding</h3>
+<p>
+1. Apply firm pressure.<br>
+2. Use clean cloth or bandage.<br>
+3. Elevate injury if possible.<br>
+4. Seek medical help.
+</p>
 </div>
 
 </div>
+</section>
+
+<section id="video" class="video">
+
+<h2>Watch CPR Training</h2>
+
+<iframe width="560" height="315"
+src="https://www.youtube.com/embed/Plse2FOkV4Q"
+title="CPR Training"
+frameborder="0"
+allowfullscreen>
+</iframe>
+
+</section>
+
+<section id="quiz" class="section">
+
+<h2>Quick CPR Quiz</h2>
+
+<div class="quiz">
+
+<p>What is the correct CPR compression rate?</p>
+
+<button onclick="alert('Correct! The recommended rate is 100–120 compressions per minute.')">
+100–120 per minute
+</button>
+
+<br><br>
+
+<button onclick="alert('Not quite. Try again.')">
+60 per minute
+</button>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>
+Educational purposes only. This site does not replace professional medical training.
+</p>
+
+</footer>
 
 </body>
 </html>
