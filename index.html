@@ -5,148 +5,49 @@
 <title>CPR & Advanced First Aid Learning</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <style>
-/* Global styles */
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: #f0f4f8;
-  scroll-behavior: smooth;
-}
-header {
-  background: linear-gradient(90deg,#ff5f6d,#ffc371);
-  color: white;
-  padding: 30px;
-  text-align: center;
-  font-size: 32px;
-  font-weight: 600;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-nav {
-  background: #003049;
-  padding: 15px;
-  text-align: center;
-}
-nav a {
-  color: white;
-  margin: 15px;
-  text-decoration: none;
-  font-size: 18px;
-  transition: color 0.3s, transform 0.2s;
-}
-nav a:hover { color: #fcbf49; transform: scale(1.1); }
+/* Global Styles */
+body { margin:0; font-family:'Poppins', sans-serif; background:#f0f4f8; scroll-behavior:smooth;}
+header { background: linear-gradient(90deg,#ff5f6d,#ffc371); color:white; padding:30px; text-align:center; font-size:32px; font-weight:600; position:sticky; top:0; z-index:100; box-shadow:0 4px 10px rgba(0,0,0,0.2);}
+nav { background:#003049; padding:15px; text-align:center;}
+nav a { color:white; margin:15px; text-decoration:none; font-size:18px; transition: color 0.3s, transform 0.2s;}
+nav a:hover { color:#fcbf49; transform:scale(1.1);}
 
-/* Hero section */
-.hero {
-  height: 80vh;
-  background: linear-gradient(135deg,#f9d423,#ff4e50);
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  border-bottom-left-radius: 50px;
-  border-bottom-right-radius: 50px;
-  animation: fadeIn 1s;
-}
-.hero h1 {
-  font-size: 3em;
-  margin: 0 20px;
-}
-.hero p {
-  font-size: 1.4em;
-}
+/* Hero Section */
+.hero { height:80vh; background:linear-gradient(135deg,#f9d423,#ff4e50); color:white; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; border-bottom-left-radius:50px; border-bottom-right-radius:50px; animation:fadeIn 1s;}
+.hero h1 { font-size:3em; margin:0 20px;}
+.hero p { font-size:1.4em;}
 
 /* Sections */
-.section {
-  padding: 80px 20px;
-  min-height: 80vh;
-  animation: fadeInUp 1s;
-}
-.section h2 {
-  font-size: 2.5em;
-  margin-bottom: 40px;
-  color: #ff4e50;
-}
+.section { padding:80px 20px; min-height:80vh; animation:fadeInUp 1s;}
+.section h2 { font-size:2.5em; margin-bottom:40px; color:#ff4e50;}
 
 /* Cards */
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-}
-.card {
-  background: white;
-  width: 300px;
-  padding: 25px;
-  border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-  transition: transform 0.3s, box-shadow 0.3s;
-  cursor: pointer;
-  text-align: center;
-}
-.card:hover {
-  transform: translateY(-15px);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.25);
-}
-.card img {
-  width: 100%;
-  border-radius: 15px;
-  margin-bottom: 15px;
-}
-.card h3 {
-  margin-bottom: 10px;
-}
+.cards { display:flex; flex-wrap:wrap; justify-content:center; gap:30px;}
+.card { background:white; width:300px; padding:25px; border-radius:20px; box-shadow:0 10px 25px rgba(0,0,0,0.15); transition: transform 0.3s, box-shadow 0.3s; cursor:pointer; text-align:center;}
+.card:hover { transform: translateY(-15px); box-shadow:0 15px 30px rgba(0,0,0,0.25);}
+.card img { width:100%; border-radius:15px; margin-bottom:15px;}
+.card h3 { margin-bottom:10px; color:#ff4e50;}
 
 /* Buttons */
-button {
-  background: #ff4e50;
-  color: white;
-  border: none;
-  padding: 12px 22px;
-  font-size: 16px;
-  border-radius: 10px;
-  cursor: pointer;
-  margin-top: 10px;
-  transition: background 0.3s, transform 0.2s;
-}
-button:hover {
-  background: #ffc371;
-  color: #003049;
-  transform: scale(1.05);
-}
+button { background:#ff4e50; color:white; border:none; padding:12px 22px; font-size:16px; border-radius:10px; cursor:pointer; margin-top:10px; transition: background 0.3s, transform 0.2s;}
+button:hover { background:#ffc371; color:#003049; transform:scale(1.05);}
 
 /* Video */
-.video iframe {
-  width: 80%;
-  max-width: 800px;
-  height: 450px;
-  border-radius: 20px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-}
+.video iframe { width:80%; max-width:800px; height:450px; border-radius:20px; box-shadow:0 10px 20px rgba(0,0,0,0.2);}
 
 /* Footer */
-footer {
-  background: #003049;
-  color: white;
-  text-align: center;
-  padding: 30px;
-}
+footer { background:#003049; color:white; text-align:center; padding:30px;}
 
 /* Animations */
-@keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
-@keyframes fadeInUp { from{opacity:0; transform: translateY(20px);} to{opacity:1; transform: translateY(0);} }
+@keyframes fadeIn{ from{opacity:0;} to{opacity:1;} }
+@keyframes fadeInUp{ from{opacity:0; transform: translateY(20px);} to{opacity:1; transform: translateY(0);} }
 
-/* Section transitions */
-.section-content { display: none; opacity: 0; transition: opacity 0.5s; }
-.section-content.active { display: block; opacity: 1; }
+/* Multi-section display */
+.section-content { display:none; opacity:0; transition: opacity 0.5s; }
+.section-content.active { display:block; opacity:1; }
 
 /* Language selector */
-select { padding: 10px; border-radius: 8px; margin-bottom: 25px; }
+select { padding:10px; border-radius:8px; margin-bottom:25px; }
 </style>
 </head>
 <body>
@@ -168,16 +69,16 @@ select { padding: 10px; border-radius: 8px; margin-bottom: 25px; }
 <div style="text-align:center; margin:20px;">
 <label for="language">Select Language:</label>
 <select id="language" onchange="changeLang()">
-  <option value="en">English</option>
-  <option value="hi">Hindi</option>
-  <option value="te">Telugu</option>
-  <option value="es">Spanish</option>
-  <option value="fr">French</option>
-  <option value="de">German</option>
-  <option value="zh">Chinese</option>
-  <option value="ar">Arabic</option>
-  <option value="ja">Japanese</option>
-  <option value="ru">Russian</option>
+<option value="en">English</option>
+<option value="hi">Hindi</option>
+<option value="te">Telugu</option>
+<option value="es">Spanish</option>
+<option value="fr">French</option>
+<option value="de">German</option>
+<option value="zh">Chinese</option>
+<option value="ar">Arabic</option>
+<option value="ja">Japanese</option>
+<option value="ru">Russian</option>
 </select>
 </div>
 
@@ -187,12 +88,37 @@ select { padding: 10px; border-radius: 8px; margin-bottom: 25px; }
 <h1 id="heroTitle">Learn Life-Saving Skills</h1>
 <p id="heroText">Comprehensive guides to respond in emergencies.</p>
 <div class="cards">
-<div class="card" onclick="showSection('cpr')"><img src="https://images.unsplash.com/photo-1588776814546-9d68b53611d7?fit=crop&w=600&q=80"><h3>CPR</h3></div>
-<div class="card" onclick="showSection('choking')"><img src="https://images.unsplash.com/photo-1581090700227-0c1a6a4f5c8a?fit=crop&w=600&q=80"><h3>Choking</h3></div>
-<div class="card" onclick="showSection('bleeding')"><img src="https://images.unsplash.com/photo-1607722144133-bfbe43d9b4df?fit=crop&w=600&q=80"><h3>Bleeding</h3></div>
-<div class="card" onclick="showSection('burns')"><img src="https://images.unsplash.com/photo-1606813909460-f6d509ee6220?fit=crop&w=600&q=80"><h3>Burns</h3></div>
-<div class="card" onclick="showSection('fractures')"><img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?fit=crop&w=600&q=80"><h3>Fractures</h3></div>
-<div class="card" onclick="showSection('shock')"><img src="https://images.unsplash.com/photo-1588776814596-2e7a3d5b9b16?fit=crop&w=600&q=80"><h3>Shock</h3></div>
+
+<div class="card" onclick="showSection('cpr')">
+<img src="images/cpr.jpg" alt="CPR Image">
+<h3>CPR</h3>
+</div>
+
+<div class="card" onclick="showSection('choking')">
+<img src="images/choking.jpg" alt="Choking Image">
+<h3>Choking</h3>
+</div>
+
+<div class="card" onclick="showSection('bleeding')">
+<img src="images/bleeding.jpg" alt="Bleeding Image">
+<h3>Bleeding</h3>
+</div>
+
+<div class="card" onclick="showSection('burns')">
+<img src="images/burns.jpg" alt="Burns Image">
+<h3>Burns</h3>
+</div>
+
+<div class="card" onclick="showSection('fractures')">
+<img src="images/fractures.jpg" alt="Fractures Image">
+<h3>Fractures</h3>
+</div>
+
+<div class="card" onclick="showSection('shock')">
+<img src="images/shock.jpg" alt="Shock Image">
+<h3>Shock</h3>
+</div>
+
 </div>
 </div>
 </section>
