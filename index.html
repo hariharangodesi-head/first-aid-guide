@@ -1,108 +1,147 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
 <title>CPR & First Aid Learning</title>
 
 <style>
-
+/* --- Base Styling --- */
 body{
-font-family: Arial;
-margin:0;
-background:#f4f8fb;
+  font-family: Arial, sans-serif;
+  margin:0;
+  background:#f4f8fb;
+  scroll-behavior: smooth;
 }
 
 header{
-background:#d62828;
-color:white;
-padding:25px;
-text-align:center;
-font-size:28px;
-font-weight:bold;
+  background:#d62828;
+  color:white;
+  padding:25px;
+  text-align:center;
+  font-size:28px;
+  font-weight:bold;
+  position: sticky;
+  top:0;
+  z-index: 100;
 }
 
 nav{
-background:#003049;
-padding:15px;
-text-align:center;
+  background:#003049;
+  padding:15px;
+  text-align:center;
 }
 
 nav a{
-color:white;
-margin:15px;
-text-decoration:none;
-font-size:18px;
+  color:white;
+  margin:15px;
+  text-decoration:none;
+  font-size:18px;
+  transition: color 0.3s;
+}
+
+nav a:hover{
+  color:#fcbf49;
 }
 
 .hero{
-padding:60px;
-text-align:center;
-background:white;
+  padding:60px;
+  text-align:center;
+  background:white;
+  animation: fadeIn 1s;
 }
 
 .section{
-padding:50px;
-text-align:center;
+  padding:50px;
+  text-align:center;
+  animation: fadeInUp 1s;
 }
 
 .cards{
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
 }
 
 .card{
-background:white;
-width:260px;
-margin:15px;
-padding:25px;
-border-radius:10px;
-box-shadow:0 2px 8px rgba(0,0,0,0.1);
+  background:white;
+  width:260px;
+  margin:15px;
+  padding:25px;
+  border-radius:10px;
+  box-shadow:0 4px 15px rgba(0,0,0,0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover{
+  transform: translateY(-10px);
+  box-shadow:0 8px 25px rgba(0,0,0,0.3);
 }
 
 .card h3{
-color:#d62828;
+  color:#d62828;
 }
 
 .video{
-text-align:center;
-padding:40px;
+  text-align:center;
+  padding:40px;
 }
 
 .quiz{
-background:white;
-margin:auto;
-width:320px;
-padding:25px;
-border-radius:10px;
-box-shadow:0 2px 8px rgba(0,0,0,0.1);
+  background:white;
+  margin:auto;
+  width:320px;
+  padding:25px;
+  border-radius:10px;
+  box-shadow:0 4px 15px rgba(0,0,0,0.2);
 }
 
 button{
-background:#d62828;
-color:white;
-border:none;
-padding:10px 20px;
-font-size:16px;
-border-radius:6px;
-cursor:pointer;
+  background:#d62828;
+  color:white;
+  border:none;
+  padding:10px 20px;
+  font-size:16px;
+  border-radius:6px;
+  cursor:pointer;
+  margin-top:5px;
+  transition: background 0.3s;
+}
+
+button:hover{
+  background:#fcbf49;
+  color:#003049;
 }
 
 footer{
-background:#003049;
-color:white;
-text-align:center;
-padding:20px;
-margin-top:40px;
+  background:#003049;
+  color:white;
+  text-align:center;
+  padding:20px;
+  margin-top:40px;
 }
 
+select{
+  padding:8px;
+  border-radius:6px;
+  margin-bottom:20px;
+}
+
+/* --- Animations --- */
+@keyframes fadeIn{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+
+@keyframes fadeInUp{
+  from{opacity:0; transform: translateY(20px);}
+  to{opacity:1; transform: translateY(0);}
+}
 </style>
 </head>
 
 <body>
 
-<header>
-CPR & First Aid Learning
-</header>
+<header id="siteHeader">CPR & First Aid Learning</header>
 
 <nav>
 <a href="#">Home</a>
@@ -111,29 +150,50 @@ CPR & First Aid Learning
 <a href="#quiz">Quiz</a>
 </nav>
 
+<div style="text-align:center; margin:20px;">
+<label for="language">Select Language:</label>
+<select id="language" onchange="changeLang()">
+  <option value="en">English</option>
+  <option value="hi">Hindi</option>
+  <option value="te">Telugu</option>
+  <option value="es">Spanish</option>
+  <option value="fr">French</option>
+  <option value="de">German</option>
+  <option value="zh">Chinese</option>
+  <option value="ar">Arabic</option>
+  <option value="ja">Japanese</option>
+  <option value="ru">Russian</option>
+</select>
+</div>
+
 <section class="hero">
-<h1>Learn Life-Saving Skills</h1>
-<p>Simple guides to help you respond during emergencies.</p>
+<h1 id="heroTitle">Learn Life-Saving Skills</h1>
+<p id="heroText">Simple guides to help you respond during emergencies.</p>
 </section>
 
 <section id="guides" class="section">
-<h2>Emergency Guides</h2>
+<h2 id="guidesTitle">Emergency Guides</h2>
 
 <div class="cards">
 
 <div class="card">
 <h3>CPR</h3>
-<p>
-1. Call emergency services.<br>
-2. Place hands in center of chest.<br>
-3. Push hard and fast.<br>
-4. 100–120 compressions per minute.
-</p>
+<p id="cprInstructions">Step-by-step CPR instructions to save lives.</p>
+<div>
+<p id="cprStep">Step 1: Call emergency services</p>
+<button onclick="prevStep()">Previous Step</button>
+<button onclick="nextStep()">Next Step</button>
+</div>
+<div>
+<p>Practice Timer:</p>
+<button onclick="startTimer()">Start CPR Timer</button>
+<p id="timer">0 sec</p>
+</div>
 </div>
 
 <div class="card">
 <h3>Choking</h3>
-<p>
+<p id="chokingText">
 1. Ask if they can cough.<br>
 2. Give 5 back blows.<br>
 3. Perform abdominal thrusts.<br>
@@ -143,7 +203,7 @@ CPR & First Aid Learning
 
 <div class="card">
 <h3>Bleeding</h3>
-<p>
+<p id="bleedingText">
 1. Apply firm pressure.<br>
 2. Use clean cloth or bandage.<br>
 3. Elevate injury if possible.<br>
@@ -155,47 +215,176 @@ CPR & First Aid Learning
 </section>
 
 <section id="video" class="video">
-
-<h2>Watch CPR Training</h2>
-
+<h2 id="videoTitle">Watch CPR Training</h2>
 <iframe width="560" height="315"
 src="https://www.youtube.com/embed/Plse2FOkV4Q"
 title="CPR Training"
 frameborder="0"
 allowfullscreen>
 </iframe>
-
 </section>
 
 <section id="quiz" class="section">
-
-<h2>Quick CPR Quiz</h2>
+<h2 id="quizTitle">Quick CPR Quiz</h2>
 
 <div class="quiz">
-
 <p>What is the correct CPR compression rate?</p>
 
 <button onclick="alert('Correct! The recommended rate is 100–120 compressions per minute.')">
 100–120 per minute
 </button>
-
 <br><br>
-
 <button onclick="alert('Not quite. Try again.')">
 60 per minute
 </button>
-
 </div>
-
 </section>
 
 <footer>
-
-<p>
-Educational purposes only. This site does not replace professional medical training.
-</p>
-
+<p id="footerText">Educational purposes only. This site does not replace professional medical training.</p>
 </footer>
+
+<script>
+// --- CPR Step-by-step ---
+let steps = [
+"Call emergency services",
+"Place hands in center of chest",
+"Push hard and fast",
+"100–120 compressions per minute"
+];
+let currentStep = 0;
+
+function nextStep(){
+if(currentStep < steps.length - 1) currentStep++;
+document.getElementById('cprStep').innerText = "Step " + (currentStep+1) + ": " + steps[currentStep];
+}
+
+function prevStep(){
+if(currentStep > 0) currentStep--;
+document.getElementById('cprStep').innerText = "Step " + (currentStep+1) + ": " + steps[currentStep];
+}
+
+// --- CPR Timer ---
+let time = 0;
+let timerInterval;
+
+function startTimer(){
+clearInterval(timerInterval);
+time=0;
+document.getElementById('timer').innerText = '0 sec';
+timerInterval = setInterval(() => {
+time++;
+document.getElementById('timer').innerText = time + ' sec';
+if(time >= 60) clearInterval(timerInterval);
+},1000);
+}
+
+// --- Multi-language support (example for demo) ---
+function changeLang(){
+let lang = document.getElementById('language').value;
+
+// English
+if(lang === "en"){
+document.getElementById('siteHeader').innerText = "CPR & First Aid Learning";
+document.getElementById('heroTitle').innerText = "Learn Life-Saving Skills";
+document.getElementById('heroText').innerText = "Simple guides to help you respond during emergencies.";
+document.getElementById('guidesTitle').innerText = "Emergency Guides";
+document.getElementById('videoTitle').innerText = "Watch CPR Training";
+document.getElementById('quizTitle').innerText = "Quick CPR Quiz";
+document.getElementById('footerText').innerText = "Educational purposes only. This site does not replace professional medical training.";
+}
+// Hindi
+else if(lang === "hi"){
+document.getElementById('siteHeader').innerText = "सीपीआर और प्राथमिक चिकित्सा सीखना";
+document.getElementById('heroTitle').innerText = "जीवन बचाने वाले कौशल सीखें";
+document.getElementById('heroText').innerText = "आपातकालीन परिस्थितियों में प्रतिक्रिया करने में मदद करने के लिए सरल गाइड।";
+document.getElementById('guidesTitle').innerText = "आपातकालीन गाइड";
+document.getElementById('videoTitle').innerText = "सीपीआर प्रशिक्षण देखें";
+document.getElementById('quizTitle').innerText = "त्वरित सीपीआर क्विज़";
+document.getElementById('footerText').innerText = "केवल शैक्षिक उद्देश्यों के लिए। यह साइट पेशेवर चिकित्सा प्रशिक्षण का विकल्प नहीं है।";
+}
+// Telugu
+else if(lang === "te"){
+document.getElementById('siteHeader').innerText = "సీపీఆర్ & ఫస్ట్ ఏయిడ్ నేర్చుకోవడం";
+document.getElementById('heroTitle').innerText = "జీవన రక్షణా నైపుణ్యాలు నేర్చుకోండి";
+document.getElementById('heroText').innerText = "అత్యవసర పరిస్థితులలో స్పందించడానికి సరళ మార్గదర్శకాలు.";
+document.getElementById('guidesTitle').innerText = "అత్యవసర మార్గదర్శకాలు";
+document.getElementById('videoTitle').innerText = "సీపీఆర్ శిక్షణ చూడండి";
+document.getElementById('quizTitle').innerText = "త్వరిత సీపీఆర్ క్విజ్";
+document.getElementById('footerText').innerText = "కేవలం విద్యా లక్ష్యాల కోసం. ఈ సైట్ ప్రొఫెషనల్ వైద్య శిక్షణకు ప్రత్యామ్నాయం కాదు.";
+}
+// Spanish
+else if(lang === "es"){
+document.getElementById('siteHeader').innerText = "Aprendizaje de RCP y Primeros Auxilios";
+document.getElementById('heroTitle').innerText = "Aprende habilidades que salvan vidas";
+document.getElementById('heroText').innerText = "Guías simples para ayudarte a responder en emergencias.";
+document.getElementById('guidesTitle').innerText = "Guías de Emergencia";
+document.getElementById('videoTitle').innerText = "Ver Entrenamiento de RCP";
+document.getElementById('quizTitle').innerText = "Quiz Rápido de RCP";
+document.getElementById('footerText').innerText = "Solo con fines educativos. Este sitio no reemplaza la capacitación médica profesional.";
+}
+// French
+else if(lang === "fr"){
+document.getElementById('siteHeader').innerText = "Apprentissage RCP et Premiers Secours";
+document.getElementById('heroTitle').innerText = "Apprenez des compétences qui sauvent des vies";
+document.getElementById('heroText').innerText = "Guides simples pour vous aider à réagir en cas d'urgence.";
+document.getElementById('guidesTitle').innerText = "Guides d'Urgence";
+document.getElementById('videoTitle').innerText = "Voir la formation RCP";
+document.getElementById('quizTitle').innerText = "Quiz Rapide RCP";
+document.getElementById('footerText').innerText = "À des fins éducatives uniquement. Ce site ne remplace pas une formation médicale professionnelle.";
+}
+// German
+else if(lang === "de"){
+document.getElementById('siteHeader').innerText = "CPR- und Erste-Hilfe-Lernen";
+document.getElementById('heroTitle').innerText = "Lerne lebensrettende Fähigkeiten";
+document.getElementById('heroText').innerText = "Einfache Anleitungen, um in Notfällen zu helfen.";
+document.getElementById('guidesTitle').innerText = "Notfallanleitungen";
+document.getElementById('videoTitle').innerText = "CPR-Training ansehen";
+document.getElementById('quizTitle').innerText = "Schnelles CPR-Quiz";
+document.getElementById('footerText').innerText = "Nur zu Bildungszwecken. Diese Website ersetzt keine professionelle medizinische Ausbildung.";
+}
+// Chinese
+else if(lang === "zh"){
+document.getElementById('siteHeader').innerText = "心肺复苏和急救学习";
+document.getElementById('heroTitle').innerText = "学习救生技能";
+document.getElementById('heroText').innerText = "简单指南，帮助您在紧急情况下采取行动。";
+document.getElementById('guidesTitle').innerText = "紧急指南";
+document.getElementById('videoTitle').innerText = "观看CPR培训";
+document.getElementById('quizTitle').innerText = "快速CPR测验";
+document.getElementById('footerText').innerText = "仅供教育用途。本网站不能替代专业医疗培训。";
+}
+// Arabic
+else if(lang === "ar"){
+document.getElementById('siteHeader').innerText = "تعلم الإنعاش القلبي والإنقاذ الأولي";
+document.getElementById('heroTitle').innerText = "تعلم مهارات إنقاذ الحياة";
+document.getElementById('heroText').innerText = "إرشادات بسيطة لمساعدتك على الاستجابة في حالات الطوارئ.";
+document.getElementById('guidesTitle').innerText = "أدلة الطوارئ";
+document.getElementById('videoTitle').innerText = "شاهد تدريب CPR";
+document.getElementById('quizTitle').innerText = "اختبار CPR سريع";
+document.getElementById('footerText').innerText = "لأغراض تعليمية فقط. هذا الموقع لا يغني عن التدريب الطبي المهني.";
+}
+// Japanese
+else if(lang === "ja"){
+document.getElementById('siteHeader').innerText = "CPR & 応急処置学習";
+document.getElementById('heroTitle').innerText = "命を救うスキルを学ぶ";
+document.getElementById('heroText').innerText = "緊急時に対応するための簡単なガイド。";
+document.getElementById('guidesTitle').innerText = "緊急ガイド";
+document.getElementById('videoTitle').innerText = "CPRトレーニングを見る";
+document.getElementById('quizTitle').innerText = "簡単CPRクイズ";
+document.getElementById('footerText').innerText = "教育目的のみ。本サイトは専門的な医療トレーニングの代替ではありません。";
+}
+// Russian
+else if(lang === "ru"){
+document.getElementById('siteHeader').innerText = "Обучение CPR и первой помощи";
+document.getElementById('heroTitle').innerText = "Изучите навыки спасения жизни";
+document.getElementById('heroText').innerText = "Простые инструкции, чтобы помочь вам действовать в чрезвычайных ситуациях.";
+document.getElementById('guidesTitle').innerText = "Руководства по чрезвычайным ситуациям";
+document.getElementById('videoTitle').innerText = "Смотреть тренинг CPR";
+document.getElementById('quizTitle').innerText = "Быстрый тест CPR";
+document.getElementById('footerText').innerText = "Только в образовательных целях. Этот сайт не заменяет профессиональное медицинское обучение.";
+}
+}
+</script>
 
 </body>
 </html>
